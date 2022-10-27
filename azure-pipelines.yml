@@ -37,10 +37,28 @@ steps:
     projectName: 'spring-boot-kubernetes'
     scanPath: '$(Build.ArtifactStagingDirectory)'
     format: 'HTML'
-
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    command: 'login'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    repository: 'cotyc/labcurso'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
 - script: | 
     sudo apt-get install -y rpm
     wget https://github.com/aquasecurity/trivy/releases/download/v0.27.1/trivy_0.27.1_Linux-64bit.deb
     sudo dpkg -i trivy_0.27.1_Linux-64bit.deb
     trivy image cotyc/labcurso:latest
   displayName: Image Scan
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    repository: 'cotyc/labcurso'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
