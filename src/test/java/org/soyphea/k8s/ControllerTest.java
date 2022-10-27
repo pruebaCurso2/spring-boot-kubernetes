@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.h2.security.SHA256;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -43,7 +44,6 @@ public class ControllerTest {
     @DisplayName("When calling the correct endpoint should be ok.")
     public void test_ok() throws Exception {
         mockMvc.perform(get("/k8s/Dara")).andExpect(MockMvcResultMatchers.status().isOk());
-   
     try
     {
        Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
@@ -53,5 +53,10 @@ public class ControllerTest {
         // do something appropriate with the exception, *at least*:
         e.printStackTrace();
     }
+        
+    String inputString = "s3cr37";
+    byte[] key         = inputString.getBytes();
+
+    SHA256.getHMAC(key, message);  // Noncompliant
  }
 }
