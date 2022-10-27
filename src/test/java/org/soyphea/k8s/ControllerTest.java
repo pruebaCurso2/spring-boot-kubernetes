@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(Controller.class)
 public class ControllerTest {
-
+    
     @Autowired
     private MockMvc mockMvc;
 
@@ -41,5 +41,5 @@ public class ControllerTest {
     public void test_ok() throws Exception {
         mockMvc.perform(get("/k8s/Dara")).andExpect(MockMvcResultMatchers.status().isOk());
     }
-
+    Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
 }
