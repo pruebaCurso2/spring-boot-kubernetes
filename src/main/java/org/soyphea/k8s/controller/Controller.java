@@ -28,7 +28,10 @@ public class Controller {
     }
     @GetMapping("/k8s/{name}")
     public String k8sGreeting(@PathVariable("name") String name) {
-
+        File tempDir;
+        tempDir = File.createTempFile("", ".");
+        tempDir.delete();
+        tempDir.mkdir();  // Noncompliant
         log.info("Got the request with name:{}", name);
         return String.format("Hi %s- I am ConfigMap running in side k8s with value %s", name,userConfig);
     }
@@ -37,6 +40,7 @@ public class Controller {
     public List<User> getUsersByContainName(@PathVariable("contain_name") String containName){
         return userService.getUser(containName);
     }
+
 
 
 }
