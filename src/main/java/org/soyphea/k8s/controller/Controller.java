@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.List;
 
 @Slf4j
@@ -29,18 +28,7 @@ public class Controller {
     }
     @GetMapping("/k8s/{name}")
     public String k8sGreeting(@PathVariable("name") String name) {
-        try
-    {
-        File tempDir;
-        tempDir = File.createTempFile("", ".");
-        tempDir.delete();
-        tempDir.mkdir();  // Noncompliant
-    }
-    catch (IOException e)
-    {
-        // do something appropriate with the exception, *at least*:
-        e.printStackTrace();
-    }
+
         
         log.info("Got the request with name:{}", name);
         return String.format("Hi %s- I am ConfigMap running in side k8s with value %s", name,userConfig);
