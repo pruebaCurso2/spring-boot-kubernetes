@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.h2.security.SHA256;
+import org.h2.*;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
