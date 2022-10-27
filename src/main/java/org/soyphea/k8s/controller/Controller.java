@@ -13,12 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Key;
 import java.security.Security;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 import java.util.List;
 
@@ -37,12 +31,7 @@ public class Controller {
     }
     @GetMapping("/k8s/{name}")
     public String k8sGreeting(@PathVariable("name") String name) {
-
-        byte[] salt = "notrandom".getBytes();
-
-        PBEParameterSpec cipherSpec = new PBEParameterSpec(salt, 10000); // Noncompliant, predictable salt
-        PBEKeySpec spec = new PBEKeySpec(chars, salt, 10000, 256); // Noncompliant, predictable salt
-        log.info("Got the request with name:{}", name);
+log.info("Got the request with name:{}", name);
         return String.format("Hi %s- I am ConfigMap running in side k8s with value %s", name,userConfig);
     }
 
