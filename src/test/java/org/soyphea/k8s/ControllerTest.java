@@ -42,7 +42,7 @@ public class ControllerTest {
     @DisplayName("When calling the correct endpoint should be ok.")
     public void test_ok() throws Exception {
         mockMvc.perform(get("/k8s/Dara")).andExpect(MockMvcResultMatchers.status().isOk());
-    }
+   
     try
     {
        Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
@@ -52,5 +52,5 @@ public class ControllerTest {
         // do something appropriate with the exception, *at least*:
         e.printStackTrace();
     }
-
+ }
 }
