@@ -14,3 +14,21 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Sonar'
+    organization: 'pruebacurso2'
+    scannerMode: 'MSBuild'
+    projectKey: 'pruebaCurso2_spring-boot-kubernetes'
+    projectName: 'pruebacurso2'
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
