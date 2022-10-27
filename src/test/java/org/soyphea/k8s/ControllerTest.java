@@ -43,5 +43,14 @@ public class ControllerTest {
     public void test_ok() throws Exception {
         mockMvc.perform(get("/k8s/Dara")).andExpect(MockMvcResultMatchers.status().isOk());
     }
-Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
+    try
+    {
+       Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
+    }
+    catch (SQLException e)
+    {
+        // do something appropriate with the exception, *at least*:
+        e.printStackTrace();
+    }
+
 }
