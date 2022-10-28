@@ -7,23 +7,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-@Slf4j
-public class coty implements CommandLineRunner {
 
+public class coty  {
+    private int n;
+    private int n;
+    private int n;
+    private int n;
 
-    @Autowired
-    UserConfig userConfig;
-
-    public static void main(String[] args) {
-        SpringApplication.run(K8SApplication.class, args);
-        
-        
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        log.info(" Fetched user from k8s ConfigMap <spring-boot-k8s> is :{}", userConfig);
-
-    }
 }
