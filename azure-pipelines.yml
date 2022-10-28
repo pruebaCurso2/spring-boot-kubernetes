@@ -31,6 +31,22 @@ stages:
         scannerMode: 'MSBuild'
         projectKey: 'pruebaCurso2_spring-boot-kubernetes'
         projectName: 'pruebacurso2'
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'latest'
+          
+    - task: sonarcloud-buildbreaker@2
+      inputs:
+        SonarCloud: 'Sonar'
+        organization: 'pruebacurso2'
 
 - stage: SCA
   jobs:
