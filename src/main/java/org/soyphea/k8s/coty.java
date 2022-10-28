@@ -28,4 +28,5 @@ public class coty  {
             // do something appropriate with the exception, *at least*:
             e.printStackTrace();
          }
+    }
 }
