@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class K8SApplication implements CommandLineRunner {
+public class coty implements CommandLineRunner {
 
 
     @Autowired
