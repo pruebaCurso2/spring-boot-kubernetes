@@ -58,6 +58,7 @@ stages:
         projectName: 'spring-boot-kubernetes'
         scanPath: '$(Build.ArtifactStagingDirectory)'
         format: 'HTML'
+        failOnCVSS: '7'
 
 - stage: Container_Security
   jobs:
