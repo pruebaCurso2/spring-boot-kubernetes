@@ -10,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class coty  {
     private int n;
-    private int n;
-    private int n;
-    private int n;
 
+    
+    public void controller(){
+    
+    }
 }
