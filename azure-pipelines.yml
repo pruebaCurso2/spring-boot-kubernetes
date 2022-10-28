@@ -45,8 +45,8 @@ stages:
           
     - task: sonarcloud-buildbreaker@2
       inputs:
-         SonarCloud: 'Sonarcloud'
-         organization: 'pruebaCurso2'
+        SonarCloud: 'Sonar'
+        organization: 'pruebacurso2'
 
 - stage: SCA
   jobs:
